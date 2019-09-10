@@ -1,0 +1,28 @@
+<h3 class="title">
+  <a [routerLink]="'/root'"><i class="fa fa-arrow-left"></i></a>
+  <span class="sparkline bar"></span>
+</h3>
+<div class="text-center" *ngIf="!isLoaded">Loading...</div>
+<div *ngIf="isLoaded">
+  <div class="card-block">
+    <form [formGroup]="form" (ngSubmit)="onSave()">
+      <h5>Cryptocurrency pair:</h5>
+      <select class="form-control" formControlName="pairSymbol" (click)="checkSymbolList()">
+        <option *ngFor="let s of coursesSymbolsList" [ngValue]="s.symbol">
+          {{ s.symbol }}
+        </option>
+      </select>
+      <br>
+      <div class="alert alert-danger" *ngIf="message">
+        {{message}}
+      </div>
+      <br>
+      <h5>Value: </h5>
+      <input type="number" class="form-control" formControlName="courseValue">
+      <br>
+      <ng-container>
+        <button class="btn btn-oval btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+      </ng-container>
+    </form>
+  </div>
+</div>

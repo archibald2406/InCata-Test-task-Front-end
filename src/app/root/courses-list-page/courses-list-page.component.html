@@ -1,0 +1,27 @@
+<h3 class="title">
+  <a [routerLink]="'/root'"><i class="fa fa-arrow-left"></i></a>
+  <span class="sparkline bar"></span>
+</h3>
+
+<div class="text-center" *ngIf="!isLoaded">Loading...</div>
+
+<div *ngIf="isLoaded">
+  <table *ngIf="coursesList.length" class="table table-bordered">
+    <tr>
+      <td class="font-weight-bold">№</td>
+      <td class="font-weight-bold">Cryptocurrency pair symbol</td>
+      <td class="font-weight-bold">Last value</td>
+      <td class="font-weight-bold">Date</td>
+    </tr>
+    <tr *ngFor="let c of coursesList; let i = index;">
+      <td>{{ i + 1 }}</td>
+      <td>{{ c.symbol }}</td>
+      <td>{{ c.last }}</td>
+      <td>{{ c.timestamp }}</td>
+    </tr>
+  </table>
+
+  <strong *ngIf="!coursesList.length" class="warning">
+    There is no information about cryptocurrency pairs in the database!
+  </strong>
+</div>

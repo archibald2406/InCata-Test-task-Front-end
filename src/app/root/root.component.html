@@ -1,0 +1,29 @@
+<div class="auth">
+  <div class="auth-container">
+    <div class="card">
+      <header class="auth-header">
+        <h1 class="auth-title">
+          Choose action
+        </h1>
+      </header>
+      <div class="auth-content">
+        <div class="alert alert-warning" *ngIf="message">
+          {{ message }}
+        </div>
+        <table>
+          <tr>
+            <button class="btn btn-oval" (click)="importCoursesToDB()" [disabled]="message">
+              Import courses info from https://api.hitbtc.com to database
+            </button>
+          </tr>
+          <tr>
+            <button [routerLink]="'/courses-list'" class="btn btn-oval">Last cryptocurrency courses</button>
+          </tr>
+          <tr>
+            <button [routerLink]="'/create-course'" class="btn btn-oval">Add course information</button>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
